@@ -1,13 +1,13 @@
-export default function Home({ sec }) {
-  return <h1 style={{ textAlign: "center", marginTop: "40vh" }}>{sec}</h1>;
+export default function Home({ minute }) {
+  return <h1 style={{ textAlign: "center", marginTop: "40vh" }}>{minute}</h1>;
 }
 
 export const getStaticProps = async () => {
-  const sec = new Date().getSeconds();
-  console.log({ sec });
+  const minute = new Date().getMinutes();
+  console.log({ minute });
   return {
-    props: { sec },
-    notFound: sec <= 30,
+    props: { minute },
+    notFound: minute % 2 === 0,
     revalidate: 1,
   };
 };
